@@ -1,0 +1,14 @@
+# 1️⃣ Base image: Java 17
+FROM eclipse-temurin:17-jdk
+
+# 2️⃣ Set working directory inside container
+WORKDIR /app
+
+# 3️⃣ Copy the Spring Boot JAR into the container
+COPY target/jobms-0.0.1-SNAPSHOT.jar app.jar
+
+# 4️⃣ Expose the port jobms runs on
+EXPOSE 8081
+
+# 5️⃣ Run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]

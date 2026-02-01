@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  jobms-app:
+    build: .
+    container_name: jobms-app
+    ports:
+      - "8081:8081"
+    depends_on:
+      - jobms-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://jobms-db:5432/jobmsdb
+      SPRING_DATASOURCE_USERNAME: jobms_user
+      SPRING_DATASOURCE_PASSWORD: jobms_pass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+  jobms-db:
+    image: postgres:15
+    container_name: jobms-db
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: jobmsdb
+      POSTGRES_USER: jobms_user
+      POSTGRES_PASSWORD: jobms_pass
