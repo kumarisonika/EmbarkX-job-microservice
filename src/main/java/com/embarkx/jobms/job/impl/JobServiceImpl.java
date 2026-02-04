@@ -57,7 +57,6 @@ public class JobServiceImpl implements JobService {
 //                new ParameterizedTypeReference<List<Review>>() {});
 //
 //        List<Review> reviews = reviewResponse.getBody();
-
         Company company = companyClient.getCompany(job.getCompanyId());
         List<Review> reviews = reviewClient.getReviews(job.getCompanyId());
 
